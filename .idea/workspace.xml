@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f898354c-f702-49dd-8d04-47cef5b512b7" name="Changes" comment="" />
+    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jlox.iml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2Kvae1sTqOaZAAPZUu8fxqAhjDC" />
+  <component name="ProjectId" id="2KvrLQC9qcxKswU9oexYgmseTwz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,11 +31,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f898354c-f702-49dd-8d04-47cef5b512b7" name="Changes" comment="" />
-      <created>1674857602108</created>
+      <changelist id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="" />
+      <created>1674865841188</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1674857602108</updated>
+      <updated>1674865841188</updated>
     </task>
     <servers />
   </component>
