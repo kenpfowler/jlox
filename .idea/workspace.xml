@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="">
+    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: add interpreter class to project">
       <change afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/lox/RuntimeError.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test.lox" afterDir="false" />
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676240521970</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: add interpreter class to project">
+      <created>1676242929973</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676242929973</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +116,7 @@
     <MESSAGE value="Created Token, TokenType, and Scanner class" />
     <MESSAGE value="Implimented expression class and visitor pattern" />
     <MESSAGE value="chore: formatted code" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: formatted code" />
+    <MESSAGE value="feat: add interpreter class to project" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add interpreter class to project" />
   </component>
 </project>
