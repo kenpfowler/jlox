@@ -114,8 +114,11 @@ public class Parser {
         return false;
     }
 
-    private Token consume(TokenType type, String message) {
-        if (check(type)) return advance();
+    private void consume(TokenType type, String message) {
+        if (check(type)) {
+            advance();
+            return;
+        }
 
         throw error(peek(), message);
     }
