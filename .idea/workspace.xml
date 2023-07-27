@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: add interpreter class and expression">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.lox" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +33,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": -1
+}]]></component>
   <component name="ProjectId" id="2KvrLQC9qcxKswU9oexYgmseTwz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -54,7 +61,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Run REPL">
+  <component name="RunManager" selected="Application.Run test file">
     <configuration name="Generate Expression File" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
       <module name="jlox" />
