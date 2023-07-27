@@ -1,9 +1,30 @@
 package lox;
 
-class Interpreter implements Expression.Visitor<Object> {
-    private Object evaluate(Expression expr) {
+import java.util.List;
+
+class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
+    private Object evaluate(Expr expr) {
         return expr.accept(this);
     }
+
+    private void execute(Statement stmt) {
+        stmt.accept(this);
+    }
+
+
+    @Override
+    public Void visitExpressionStatement(Statement.Expression stmt) {
+        evaluate(stmt.expression);
+        return null;
+    }
+
+    @Override
+    public Void visitPrintStatement(Statement.Print stmt) {
+        Object value = evaluate(stmt.expression);
+        System.out.println(stringify(value));
+        return null;
+    }
+
 
     private void checkNumberOperand(Token operator, Object operand) {
         if (operand instanceof Double) return;
@@ -31,10 +52,11 @@ class Interpreter implements Expression.Visitor<Object> {
         return a.equals(b);
     }
 
-    void interpret(Expression expression) {
+    void interpret(List<Statement> statements) {
         try {
-            Object value = evaluate(expression);
-            System.out.println(stringify(value));
+            for (Statement statement : statements) {
+                execute(statement);
+            }
         } catch (RuntimeError error) {
             Lox.runtimeError(error);
         }
@@ -56,7 +78,7 @@ class Interpreter implements Expression.Visitor<Object> {
 
 
     @Override
-    public Object visitBinaryExpression(Expression.Binary expression) {
+    public Object visitBinaryExpression(Expr.Binary expression) {
         Object left = evaluate(expression.left);
         Object right = evaluate(expression.right);
 
@@ -104,17 +126,17 @@ class Interpreter implements Expression.Visitor<Object> {
     }
 
     @Override
-    public Object visitGroupingExpression(Expression.Grouping expression) {
-        return evaluate(expression.expression);
+    public Object visitGroupingExpression(Expr.Grouping expression) {
+        return evaluate(expression.expr);
     }
 
     @Override
-    public Object visitLiteralExpression(Expression.Literal expression) {
+    public Object visitLiteralExpression(Expr.Literal expression) {
         return expression.value;
     }
 
     @Override
-    public Object visitUnaryExpression(Expression.Unary expression) {
+    public Object visitUnaryExpression(Expr.Unary expression) {
         Object right = evaluate(expression.right);
 
         switch (expression.operator.type) {
