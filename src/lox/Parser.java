@@ -14,10 +14,10 @@ public class Parser {
         this.tokens = tokens;
     }
 
-    List<Statement> parse() {
-        List<Statement> statements = new ArrayList<>();
+    List<Stmt> parse() {
+        List<Stmt> statements = new ArrayList<>();
         while (!isAtEnd()) {
-            statements.add(statement());
+            statements.add(declaration());
         }
 
         return statements;
@@ -28,22 +28,45 @@ public class Parser {
         return equality();
     }
 
-    private Statement statement() {
-        if (match(TokenType.PRINT)) return printStatement();
-
-        return expressionStatement();
+    private Stmt declaration() {
+        try {
+            if (match(TokenType.VAR)) return varDeclaration();
+            return statement();
+        } catch (ParseError error) {
+            synchronize();
+            return null;
+        }
     }
 
-    private Statement printStatement() {
+    private Stmt varDeclaration() {
+        Token name = consume(TokenType.IDENTIFIER, "Expect variable name.");
+
+        Expr initializer = null;
+        if (match(TokenType.EQUAL)) {
+            initializer = expression();
+        }
+
+        consume(TokenType.SEMICOLON, "Expect ';' after variable declaration.");
+        return new Stmt.Var(name, initializer);
+    }
+
+
+    private Stmt statement() {
+        if (match(TokenType.PRINT)) return printStmt();
+
+        return expressionStmt();
+    }
+
+    private Stmt printStmt() {
         Expr value = expression();
         consume(TokenType.SEMICOLON, "Expect ';' after value.");
-        return new Statement.Print(value);
+        return new Stmt.Print(value);
     }
 
-    private Statement expressionStatement() {
+    private Stmt expressionStmt() {
         Expr expr = expression();
         consume(TokenType.SEMICOLON, "Expect ';' after expression.");
-        return new Statement.Expression(expr);
+        return new Stmt.Expression(expr);
     }
 
 
@@ -114,6 +137,11 @@ public class Parser {
             return new Expr.Literal(previous().literal);
         }
 
+        if (match(TokenType.IDENTIFIER)) {
+            return new Expr.Variable(previous());
+        }
+
+
         if (match(TokenType.LEFT_PAREN)) {
             Expr expr = expression();
             consume(TokenType.RIGHT_PAREN, "Expect ')' after expression.");
@@ -135,10 +163,9 @@ public class Parser {
         return false;
     }
 
-    private void consume(TokenType type, String message) {
+    private Token consume(TokenType type, String message) {
         if (check(type)) {
-            advance();
-            return;
+            return advance();
         }
 
         throw error(peek(), message);

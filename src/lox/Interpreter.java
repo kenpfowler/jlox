@@ -2,24 +2,24 @@ package lox;
 
 import java.util.List;
 
-class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
+class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     private Object evaluate(Expr expr) {
         return expr.accept(this);
     }
 
-    private void execute(Statement stmt) {
+    private void execute(Stmt stmt) {
         stmt.accept(this);
     }
 
 
     @Override
-    public Void visitExpressionStatement(Statement.Expression stmt) {
+    public Void visitExpressionStmt(Stmt.Expression stmt) {
         evaluate(stmt.expression);
         return null;
     }
 
     @Override
-    public Void visitPrintStatement(Statement.Print stmt) {
+    public Void visitPrintStmt(Stmt.Print stmt) {
         Object value = evaluate(stmt.expression);
         System.out.println(stringify(value));
         return null;
@@ -52,9 +52,9 @@ class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
         return a.equals(b);
     }
 
-    void interpret(List<Statement> statements) {
+    void interpret(List<Stmt> statements) {
         try {
-            for (Statement statement : statements) {
+            for (Stmt statement : statements) {
                 execute(statement);
             }
         } catch (RuntimeError error) {
@@ -78,7 +78,7 @@ class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
 
 
     @Override
-    public Object visitBinaryExpression(Expr.Binary expression) {
+    public Object visitBinaryExpr(Expr.Binary expression) {
         Object left = evaluate(expression.left);
         Object right = evaluate(expression.right);
 
@@ -126,17 +126,17 @@ class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
     }
 
     @Override
-    public Object visitGroupingExpression(Expr.Grouping expression) {
-        return evaluate(expression.expr);
+    public Object visitGroupingExpr(Expr.Grouping expression) {
+        return evaluate(expression.expression);
     }
 
     @Override
-    public Object visitLiteralExpression(Expr.Literal expression) {
+    public Object visitLiteralExpr(Expr.Literal expression) {
         return expression.value;
     }
 
     @Override
-    public Object visitUnaryExpression(Expr.Unary expression) {
+    public Object visitUnaryExpr(Expr.Unary expression) {
         Object right = evaluate(expression.right);
 
         switch (expression.operator.type) {
@@ -150,4 +150,15 @@ class Interpreter implements Expr.Visitor<Object>, Statement.Visitor<Void> {
         // Unreachable.
         return null;
     }
+
+    @Override
+    public Object visitVariableExpr(Expr.Variable expr) {
+        return null;
+    }
+
+    @Override
+    public Void visitVarStmt(Stmt.Var stmt) {
+        return null;
+    }
+
 }
