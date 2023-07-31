@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: evaluate statemetns">
-      <change afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
+    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: parse and interpret stmts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Statement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.lox" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,11 +66,18 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Run test file">
+  <component name="RunManager" selected="Application.Print AST">
     <configuration name="Generate Expression File" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
       <module name="jlox" />
       <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/src/lox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Print AST" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
+      <module name="jlox" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,6 +99,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Generate Expression File" />
+      <item itemvalue="Application.Print AST" />
       <item itemvalue="Application.Run test file" />
       <item itemvalue="Application.Run REPL" />
     </list>
@@ -164,7 +173,55 @@
       <option name="project" value="LOCAL" />
       <updated>1690484617726</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add to src control">
+      <option name="closed" value="true" />
+      <created>1690556856653</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556856653</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: add environment class">
+      <option name="closed" value="true" />
+      <created>1690556875009</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556875009</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: update ast printer">
+      <option name="closed" value="true" />
+      <created>1690556886596</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556886596</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add new expr">
+      <option name="closed" value="true" />
+      <created>1690556901405</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556901405</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: update generator">
+      <option name="closed" value="true" />
+      <created>1690556917716</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556917716</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: parse and interpret stmts">
+      <option name="closed" value="true" />
+      <created>1690556945779</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1690556945779</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +244,12 @@
     <MESSAGE value="feat: add guard clause" />
     <MESSAGE value="feat: generate stmt file" />
     <MESSAGE value="feat: evaluate statemetns" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: evaluate statemetns" />
+    <MESSAGE value="add to src control" />
+    <MESSAGE value="feat: add environment class" />
+    <MESSAGE value="feat: update ast printer" />
+    <MESSAGE value="feat: add new expr" />
+    <MESSAGE value="feat: update generator" />
+    <MESSAGE value="feat: parse and interpret stmts" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: parse and interpret stmts" />
   </component>
 </project>

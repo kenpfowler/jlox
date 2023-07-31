@@ -1,54 +1,85 @@
 package lox;
 
+import java.util.List;
+
 abstract class Stmt {
-    interface Visitor<R> {
-        R visitExpressionStmt(Expression stmt);
-
-        R visitPrintStmt(Print stmt);
-
-        R visitVarStmt(Var stmt);
+  interface Visitor<R> {
+    R visitIfStmt(If stmt);
+    R visitBlockStmt(Block stmt);
+    R visitExpressionStmt(Expression stmt);
+    R visitPrintStmt(Print stmt);
+    R visitVarStmt(Var stmt);
+  }
+  static class If extends Stmt {
+    If(Expr condition, Stmt thenBranch, Stmt elseBranch) {
+      this.condition = condition;
+      this.thenBranch = thenBranch;
+      this.elseBranch = elseBranch;
     }
 
-    static class Expression extends Stmt {
-        Expression(Expr expression) {
-            this.expression = expression;
-        }
-
-        @Override
-        <R> void accept(Visitor<R> visitor) {
-            visitor.visitExpressionStmt(this);
-        }
-
-        final Expr expression;
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitIfStmt(this);
     }
 
-    static class Print extends Stmt {
-        Print(Expr expression) {
-            this.expression = expression;
-        }
+    final Expr condition;
+    final Stmt thenBranch;
+    final Stmt elseBranch;
+  }
 
-        @Override
-        <R> void accept(Visitor<R> visitor) {
-            visitor.visitPrintStmt(this);
-        }
-
-        final Expr expression;
+  static class Block extends Stmt {
+    Block(List<Stmt> statements) {
+      this.statements = statements;
     }
 
-    static class Var extends Stmt {
-        Var(Token name, Expr initializer) {
-            this.name = name;
-            this.initializer = initializer;
-        }
-
-        @Override
-        <R> void accept(Visitor<R> visitor) {
-            visitor.visitVarStmt(this);
-        }
-
-        final Token name;
-        final Expr initializer;
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitBlockStmt(this);
     }
 
-    abstract <R> void accept(Visitor<R> visitor);
+    final List<Stmt> statements;
+  }
+
+  static class Expression extends Stmt {
+    Expression(Expr expression) {
+      this.expression = expression;
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitExpressionStmt(this);
+    }
+
+    final Expr expression;
+  }
+
+  static class Print extends Stmt {
+    Print(Expr expression) {
+      this.expression = expression;
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitPrintStmt(this);
+    }
+
+    final Expr expression;
+  }
+
+  static class Var extends Stmt {
+    Var(Token name, Expr initializer) {
+      this.name = name;
+      this.initializer = initializer;
+    }
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitVarStmt(this);
+    }
+
+    final Token name;
+    final Expr initializer;
+  }
+
+  abstract <R> R accept(Visitor<R> visitor);
 }

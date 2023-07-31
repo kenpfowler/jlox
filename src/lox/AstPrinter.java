@@ -39,6 +39,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<Void> {
         return null;
     }
 
+    @Override
+    public String visitAssignExpr(Expr.Assign expr) {
+        return null;
+    }
+
     private String parenthesize(String name, Expr... exprs) {
         StringBuilder builder = new StringBuilder();
 
@@ -50,6 +55,16 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<Void> {
         builder.append(")");
 
         return builder.toString();
+    }
+
+    @Override
+    public Void visitIfStmt(Stmt.If stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitBlockStmt(Stmt.Block stmt) {
+        return null;
     }
 
     @Override
