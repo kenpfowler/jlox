@@ -40,7 +40,7 @@ public class Parser {
                 return new Expr.Assign(name, value);
             }
 
-            error(equals, "Invalid assignment target.");
+            throw error(equals, "Invalid assignment target.");
         }
 
         return expr;

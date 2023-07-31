@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: parse and interpret stmts">
+    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: update data structures">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/AstPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.lox" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +61,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Print AST">
+  <component name="RunManager" selected="Application.Run test file">
     <configuration name="Generate Expression File" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
       <module name="jlox" />
@@ -221,7 +216,31 @@
       <option name="project" value="LOCAL" />
       <updated>1690556945779</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: add environment">
+      <option name="closed" value="true" />
+      <created>1690847128593</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1690847128593</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: add block, if, and assignment">
+      <option name="closed" value="true" />
+      <created>1690847189612</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1690847189612</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: update data structures">
+      <option name="closed" value="true" />
+      <created>1690847218473</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1690847218473</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,6 +269,9 @@
     <MESSAGE value="feat: add new expr" />
     <MESSAGE value="feat: update generator" />
     <MESSAGE value="feat: parse and interpret stmts" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: parse and interpret stmts" />
+    <MESSAGE value="feat: add environment" />
+    <MESSAGE value="feat: add block, if, and assignment" />
+    <MESSAGE value="feat: update data structures" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update data structures" />
   </component>
 </project>
