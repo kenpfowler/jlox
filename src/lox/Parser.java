@@ -23,29 +23,6 @@ public class Parser {
         return statements;
     }
 
-
-    private Expr expression() {
-        return assignment();
-    }
-
-    private Expr assignment() {
-        Expr expr = equality();
-
-        if (match(TokenType.EQUAL)) {
-            Token equals = previous();
-            Expr value = assignment();
-
-            if (expr instanceof Expr.Variable) {
-                Token name = ((Expr.Variable) expr).name;
-                return new Expr.Assign(name, value);
-            }
-
-            throw error(equals, "Invalid assignment target.");
-        }
-
-        return expr;
-    }
-
     private Stmt declaration() {
         try {
             if (match(TokenType.VAR)) return varDeclaration();
@@ -72,9 +49,43 @@ public class Parser {
     private Stmt statement() {
         if (match(TokenType.IF)) return ifStatement();
         if (match(TokenType.PRINT)) return printStmt();
+        if (match(TokenType.WHILE)) return whileStmt();
         if (match(TokenType.LEFT_BRACE)) return new Stmt.Block(block());
 
         return expressionStmt();
+    }
+
+
+    private Expr expression() {
+        return assignment();
+    }
+
+    private Expr assignment() {
+        Expr expr = equality();
+
+        if (match(TokenType.EQUAL)) {
+            Token equals = previous();
+            Expr value = assignment();
+
+            if (expr instanceof Expr.Variable) {
+                Token name = ((Expr.Variable) expr).name;
+                return new Expr.Assign(name, value);
+            }
+
+            throw error(equals, "Invalid assignment target.");
+        }
+
+        return expr;
+    }
+
+
+    private Stmt whileStmt() {
+        consume(TokenType.LEFT_PAREN, "Expect '(' after 'while'.");
+        Expr condition = expression();
+        consume(TokenType.RIGHT_PAREN, "Expect ')' after if condition.");
+        Stmt body = this.statement();
+
+        return new Stmt.While(condition, body);
     }
 
 
@@ -212,6 +223,13 @@ public class Parser {
         return false;
     }
 
+    /**
+     * when we know what the next token should be we can use consume to eagerly advance the parser, else throw an error
+     *
+     * @param type
+     * @param message
+     * @return token or throws an error
+     */
     private Token consume(TokenType type, String message) {
         if (check(type)) {
             return advance();
