@@ -1,6 +1,7 @@
 package lox;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Parser {
@@ -47,7 +48,8 @@ public class Parser {
 
 
     private Stmt statement() {
-        if (match(TokenType.IF)) return ifStatement();
+        if (match(TokenType.FOR)) return forStmt();
+        if (match(TokenType.IF)) return ifStmt();
         if (match(TokenType.PRINT)) return printStmt();
         if (match(TokenType.WHILE)) return whileStmt();
         if (match(TokenType.LEFT_BRACE)) return new Stmt.Block(block());
@@ -78,6 +80,52 @@ public class Parser {
         return expr;
     }
 
+    /**
+     * NOTE: for loops are syntactic sugar that are built on top of while loops.
+     * therefore, instead of returning a for statement here, we DESUGAR the input and return a while statement that represents the for loop.
+     *
+     * @return Stmt.While
+     */
+    private Stmt forStmt() {
+        consume(TokenType.LEFT_PAREN, "Expect '(' after 'for'.");
+        Stmt initializer;
+        if (match(TokenType.SEMICOLON)) {
+            initializer = null;
+        } else if (match(TokenType.VAR)) {
+            initializer = varDeclaration();
+        } else {
+            initializer = expressionStmt();
+        }
+
+        Expr condition = null;
+        if (!check(TokenType.SEMICOLON)) {
+            condition = expression();
+        }
+        consume(TokenType.SEMICOLON, "Expect ';' after loop condition.");
+
+        Expr increment = null;
+        if (!check(TokenType.RIGHT_PAREN)) {
+            increment = expression();
+        }
+        consume(TokenType.RIGHT_PAREN, "Expect ')' after for clauses.");
+
+        Stmt body = statement();
+        if (increment != null) {
+            body = new Stmt.Block(
+                    Arrays.asList(
+                            body,
+                            new Stmt.Expression(increment)));
+        }
+
+        if (condition == null) condition = new Expr.Literal(true);
+        body = new Stmt.While(condition, body);
+
+        if (initializer != null) {
+            body = new Stmt.Block(Arrays.asList(initializer, body));
+        }
+
+        return body;
+    }
 
     private Stmt whileStmt() {
         consume(TokenType.LEFT_PAREN, "Expect '(' after 'while'.");
@@ -89,7 +137,7 @@ public class Parser {
     }
 
 
-    private Stmt ifStatement() {
+    private Stmt ifStmt() {
         consume(TokenType.LEFT_PAREN, "Expect '(' after 'if'.");
         Expr condition = expression();
         consume(TokenType.RIGHT_PAREN, "Expect ')' after if condition.");

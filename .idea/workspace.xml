@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: add while loop">
+    <list default="true" id="63258142-69d3-4520-871b-3032e963e5f2" name="Changes" comment="feat: add documentation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.lox" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690984457891</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat: add documentation">
+      <option name="closed" value="true" />
+      <created>1690985120706</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1690985120706</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +296,7 @@
     <MESSAGE value="feat: update data structures" />
     <MESSAGE value="feat: fix issues" />
     <MESSAGE value="feat: add while loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add while loop" />
+    <MESSAGE value="feat: add documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add documentation" />
   </component>
 </project>
