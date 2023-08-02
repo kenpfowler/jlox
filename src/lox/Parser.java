@@ -212,6 +212,12 @@ public class Parser {
     }
 
 
+    /**
+     * attempts to advance the parser if the token type/s match the current token
+     *
+     * @param types tokens
+     * @return boolean
+     */
     private boolean match(TokenType... types) {
         for (TokenType type : types) {
             if (check(type)) {
@@ -224,11 +230,11 @@ public class Parser {
     }
 
     /**
-     * when we know what the next token should be we can use consume to eagerly advance the parser, else throw an error
+     * eagerly parse the current token and throw an error if its unexpected
      *
-     * @param type
-     * @param message
-     * @return token or throws an error
+     * @param type    token
+     * @param message error message to be shown if parsing fails
+     * @return token
      */
     private Token consume(TokenType type, String message) {
         if (check(type)) {
@@ -239,6 +245,12 @@ public class Parser {
     }
 
 
+    /**
+     * checks if the current token is of the provided type
+     *
+     * @param type token
+     * @return boolean
+     */
     private boolean check(TokenType type) {
         if (isAtEnd()) return false;
         return peek().type == type;
@@ -253,10 +265,16 @@ public class Parser {
         return peek().type == TokenType.EOF;
     }
 
+    /**
+     * @return the current token
+     */
     private Token peek() {
         return tokens.get(current);
     }
 
+    /**
+     * @return the previous token
+     */
     private Token previous() {
         return tokens.get(current - 1);
     }
